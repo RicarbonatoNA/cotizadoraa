@@ -1,0 +1,115 @@
+<main class="container p-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <form [formGroup]="forum">
+                    <div class="form-group">
+                        <input formControlName="name" class="form-control"
+                        placeholder="Nombre" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="identificador_fiscal" class="form-control"
+                        placeholder="Identificador fiscal" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="direccion_facturacion" class="form-control"
+                        placeholder="Direccion de facturacion" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="telefono" class="form-control"
+                        placeholder="Telefono" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <textarea formControlName="logo" rows="2" class="form-control" placeholder="Notas"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea formControlName="notas" rows="2" class="form-control" placeholder="Notas"></textarea>
+                    </div>
+                    <div>
+                        <select formControlName="user_id" class="form-select" aria-label="Default select example">
+                            <option *ngFor="let user of listaUsers" [value]="user.id">{{user.name}}</option>
+                        </select>
+                    </div>
+                    <button (click)="Create()" class="btn btn-success btn-block" name="Guardar empresa" value="Guardar empresa">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>identificador_fiscal</th>
+              <th>direccion_facturacion</th>
+              <th>telefono</th>
+              <th>logo</th>
+              <th>notas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let business of listaBusiness">
+              <td>{{business.name}}</td>
+              <td>{{business.identificador_fiscal}}</td>
+              <td>{{business.direccion_facturacion}}</td>
+              <td>{{business.telefono}}</td>
+              <td>{{business.logo}}</td>
+              <td>{{business.notas}}</td>
+              <td>
+                <button  (click)="getId(business.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Actualizar</button>
+                <button (click)="Delete(business.id)" class="btn btn-danger">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="foro">
+          <div class="form-group">
+              <input formControlName="name2" type="text" class="form-control" placeholder="Update name">
+          </div>
+          <div class="form-group">
+              <input formControlName="identificador_fiscal2" type="text" class="form-control"  placeholder="Update identificador_fiscal">
+          </div>
+          <div class="form-group">
+              <input formControlName="direccion_facturacion2" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+              <input formControlName="telefono2" type="text" class="form-control" placeholder="Update telefono">
+          </div>
+          <div class="form-group">
+              <input formControlName="logo2" type="text" class="form-control" placeholder="Update logo">
+          </div>
+          <div class="form-group">
+          <textarea formControlName="notas2" class="form-control" cols="30" rows="10"></textarea>
+          </div>
+          <div>
+              <select formControlName="user_id2" class="form-select" aria-label="Default select example">
+                  <option *ngFor="let user of listaUsers" [value]="user.id">{{user.name}}</option>
+              </select>
+          </div>
+
+          <button  (click)="Update()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Actualizar</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

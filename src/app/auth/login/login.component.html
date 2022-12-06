@@ -1,0 +1,9 @@
+<body>    
+    <h1>Inicia Sesion</h1>
+    <form [formGroup] = 'forum'>
+        <input type="text" formControlName="email" placeholder="Escribe tu correo">
+        <input type="password" formControlName="password" placeholder="Escribe tu contraseña">
+        <button (click)="Login()" valor="Send">si</button>
+    </form>
+    <span>o <a routerLink="/register">Registrate</a></span>
+</body>
